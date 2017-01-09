@@ -10,6 +10,10 @@ Just copy [protein.js](./lib/protein.js) file to your project and don't forget t
 
 * jQuery 3.1.1 or later.
 
+# Usage
+
+Usage examples will be published soon.
+
 # License
 
 `Protein` is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
