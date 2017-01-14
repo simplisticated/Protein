@@ -8,7 +8,7 @@ Why this framework was made? Because I can.
 
 # How To Get Started
 
-Just copy [protein.js](./lib/protein.js) file to your project and don't forget to follow dependencies.
+Just copy [lib/protein.js](./lib/protein.js) file to your project and don't forget to follow dependencies.
 
 # Dependencies
 
@@ -233,7 +233,7 @@ HTML result:
 
 # Demo
 
-If you want to see how `Protein` works in real life, pull repository and open [demo/index.html](demo/index.html) page.
+If you want to see how `Protein` works in real life, pull repository and open [demo/index.html](./demo/index.html) page.
 
 # License
 
