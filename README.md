@@ -18,19 +18,19 @@ Just copy [lib/protein.js](./lib/protein.js) file to your project and don't forg
 
 ## Initialisation of Protein object
 
-Everything begins with `Protein` instance.
+Everything begins with `Protein` instance. All `Protein` objects are associated with `jQuery` elements.
 
-`Protein` instance associated with `html` tag:
+`Protein` instance associated with `html` element:
 ```javascript
 Protein.html()
 ```
 
-`Protein` instance associated with `head` tag:
+`Protein` instance associated with `head` element:
 ```javascript
 Protein.head()
 ```
 
-`Protein` instance associated with `body` tag:
+`Protein` instance associated with `body` element:
 ```javascript
 Protein.body()
 ```
@@ -40,14 +40,20 @@ Protein.body()
 new Protein($("body table"))
 ```
 
-By default, empty constructor returns `Protein` instance associated with `body` tag:
+By default, empty constructor returns `Protein` instance associated with `body` element:
 ```javascript
 new Protein() // is equivalent to Protein.body()
 ```
 
+jQuery element associated with `Protein` instance can be obtained in this way:
+
+```javascript
+    var associatedElement = proteinInstance.getTopElement();
+```
+
 ## Insert tags
 
-Each `Protein` object is a reference to some HTML tag. You can use `Protein` to change internal structure of the tag, associated with your `Protein` instance.
+Each `Protein` object is a reference to some jQuery element. You can use `Protein` to change internal structure of the element, associated with your `Protein` instance.
 
 To insert tag inside of the associated tag, use this:
 
@@ -71,6 +77,7 @@ If you need to configure inserted tag (add id, class, any other attributes), you
 
 ```
 proteinInstance.tag(Alphabet.div, function (div) {
+    // div is a jQuery element
     div.attr("class", "container");
 });
 ```
@@ -230,6 +237,45 @@ HTML result:
 ```
 
 `block` method returns current `Protein` instance, so it's possible to use call chains here too.
+
+With `block` method you can also manipulate with HTML element linked with `Protein` instance:
+
+```javascript
+new Protein($("body table tbody"))
+    .block(function (protein) {
+        protein.getTopElement().hide(); // Hides table body
+    });
+```
+
+Or even manage higher level elements:
+
+```javascript
+new Protein($("body"))
+    .tag(Alphabet.table)
+        .open()
+            .tag(Alphabet.tbody)
+                .open()
+                    .block(function (protein){
+                        protein
+                            .getHigherLevelInstance()
+                            .getHigherLevelInstance()
+                            .hide(); // Hides page body
+                    })
+                .close()
+        .close();
+```
+
+# Integration with jQuery
+
+`Protein` uses `jQuery` under the hood. When you configure new tag, you use `jQuery` element so it's possible to make a lot of different manipulations with it:
+
+```javascript
+proteinInstance
+    .tag(Alphabet.div, function (div) {
+        div.addClass("container").hide();
+        div.find("p").remove();
+    });
+```
 
 # Demo
 
