@@ -231,6 +231,10 @@ HTML result:
 
 `block` method returns current `Protein` instance, so it's possible to use call chains here too.
 
+# Demo
+
+If you want to see how `Protein` works in real life, open [demo](demo/index.html) page.
+
 # License
 
 `Protein` is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
