@@ -18,36 +18,36 @@ Just copy [protein.js](./lib/protein.js) file to your project and don't forget t
 
 ## Initialisation of Protein object
 
-Everything begins with Protein instance.
+Everything begins with `Protein` instance.
 
-Protein instance associated with `html` tag:
+`Protein` instance associated with `html` tag:
 ```javascript
 Protein.html()
 ```
 
-Protein instance associated with `head` tag:
+`Protein` instance associated with `head` tag:
 ```javascript
 Protein.head()
 ```
 
-Protein instance associated with `body` tag:
+`Protein` instance associated with `body` tag:
 ```javascript
 Protein.body()
 ```
 
-Protein instance associated with jQuery element:
+`Protein` instance associated with jQuery element:
 ```javascript
 new Protein($("body table"))
 ```
 
-By default, empty constructor returns Protein instance associated with body tag:
+By default, empty constructor returns `Protein` instance associated with `body` tag:
 ```javascript
 new Protein() // is equivalent to Protein.body()
 ```
 
 ## Insert tags
 
-Each Protein object is a reference to some HTML tag. You can use Protein to change internal structure of the tag, associated with your Protein instance.
+Each `Protein` object is a reference to some HTML tag. You can use `Protein` to change internal structure of the tag, associated with your `Protein` instance.
 
 To insert tag inside of the associated tag, use this:
 
@@ -177,6 +177,59 @@ Protein
                 .html("<p></p>")
             .close();
 ```
+
+## Blocks
+
+Sometimes you need to implement some complicated logic with tags (cycles, conditions, etc). In this case, `block` method can be helpful:
+
+```javascript
+new Protein($("body table tbody"))
+    .block(function (protein) {
+        for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
+            protein
+                .tag(Alphabet.tr)
+                    .open()
+                        .block(function (protein){
+                            for (var columnIndex = 0; columnIndex < 3; columnIndex++) {
+                                protein
+                                    .tag(Alphabet.td)
+                                        .open()
+                                            .text((rowIndex + 1) * 10 + columnIndex + 1);
+                                        .close();
+                            }
+                        })
+                    .close();
+        }
+    });
+```
+
+HTML result:
+
+```html
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td>32</td>
+                <td>33</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+```
+
+`block` method returns current `Protein` instance, so it's possible to use call chains here too.
 
 # License
 
