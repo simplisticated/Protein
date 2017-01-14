@@ -233,7 +233,7 @@ HTML result:
 
 # Demo
 
-If you want to see how `Protein` works in real life, open [demo](demo/index.html) page.
+If you want to see how `Protein` works in real life, pull repository and open [demo](demo/index.html) page.
 
 # License
 
