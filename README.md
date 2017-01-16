@@ -277,6 +277,18 @@ proteinInstance
     });
 ```
 
+or easier:
+
+```javascript
+proteinInstance
+    .tag(Alphabet.div)
+        .getTopElement()
+            .addClass("container")
+            .hide()
+            .find("p")
+            .remove();
+```
+
 # Demo
 
 If you want to see how `Protein` works in real life, pull repository and open [demo/index.html](./demo/index.html) page.
