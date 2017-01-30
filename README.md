@@ -185,6 +185,18 @@ Protein
             .close();
 ```
 
+## Remove tags
+
+Removing inner (nested) elements is quite simple. Use `clear` method of `Protein` instance:
+
+```javascript
+Protein
+    .body
+        .clear();
+```
+
+The code above removes all nested elements from `body` element.
+
 ## Blocks
 
 Sometimes you need to implement some complicated logic with tags (cycles, conditions, etc). In this case, `block` method can be helpful:
