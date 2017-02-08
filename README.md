@@ -1,3 +1,7 @@
+<p align="center" >
+    <img src="https://github.com/igormatyushkin014/Protein/blob/master/images/logo-1024-300.png" alt="Protein" title="Protein">
+</p>
+
 # At a Glance
 
 `Protein` is an easy but super powerful JavaScript framework that allows you to generate HTML structure using JavaScript. With `Protein` you don't need to write HTML code inside of `body` tag at all. But you are still able to combine HTML and `Protein` partially when needed.
